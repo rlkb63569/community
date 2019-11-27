@@ -1,0 +1,55 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="sectionName"></title>
+    <link rel="stylesheet" href="/community/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/community/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="/community/css/mycss.css">
+    <link rel="icon" href="/community/image/logo.png"/>
+    <link rel="stylesheet" href="/community/css/link.css">
+    <script src="/community/js/jquery-3.3.1.min.js"></script>
+    <script src="/community/js/bootstrap.min.js"></script>
+</head>
+<body style="background-color: #efefef">
+<div th:insert="~{navigation.html :: navigation}"></div>
+<div class="container" style="background-color: white">
+    <div class="row">
+        <div class="col-lg-9">
+            <h3><span th:text="${question.title}"></span></h3>
+            <span class="text-desc">
+                作者: <span th:text="${question.user.name}"></span> |
+                <span th:text="${question.view_count}"></span> 次浏览 |
+                <span th:text="${#dates.format(question.gmt_create, 'yyyy-MM-dd')}"></span> 创建
+            </span>
+            <hr>
+            <span th:text="${question.description}"></span>
+            <hr>
+            <a th:if="${session.user!=null && question.user.id==question.creator_id}">
+                <span class="glyphicon glyphicon-pencil"></span> 编辑
+            </a>
+        </div>
+        <div class="col-lg-3">
+            <div class="list-group">
+                <h4 style="margin-top: 10px">发起人</h4>
+                <div class="media">
+                    <div class="media-left">
+                        <a href="#">
+                            <img class="media-object img-circle"
+                                 th:src="${question.user.avatar_url}"/>
+                        </a>
+                    </div>
+                    <div class="media-body">
+                        <h5 class="media-heading">
+                            <span th:text="${question.user.name}"></span>
+                        </h5>
+                    </div>
+                </div>
+                <hr>
+                <h4>相关问题</h4>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

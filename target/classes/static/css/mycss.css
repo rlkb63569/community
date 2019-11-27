@@ -1,0 +1,25 @@
+.text-desc{
+    font-size: 12px;
+    font-weight: normal;
+    color: #999;
+}
+.media-object{
+    width:50px;
+    height:50px;
+}
+.row{
+    margin-right: -15px;
+    margin-left: -15px;
+}
+body, input, button, select, textarea, h1, h2, h3, h4, h5, h6,label {
+    font-family: candara,"Helvetica Neue",Helvetica,Arial,"PingFang SC","Hiragino Sans GB","WenQuanYi Micro Hei","Microsoft Yahei",sans-serif, -apple-system;
+    -webkit-font-smoothing: antialiased;
+}
+h1, h2, h3, h4, h5, h6,label {
+    font-size: 100%;
+    line-height: 1.7;
+}
+a{
+    color: #155faa;
+    text-decoration: none;
+}

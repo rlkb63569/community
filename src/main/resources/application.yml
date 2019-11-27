@@ -1,0 +1,24 @@
+server:
+  port: 8081
+  servlet:
+    context-path: /community
+spring:
+  thymeleaf:
+    mode: HTML
+    encoding: UTF-8
+    servlet:
+      content-type: text/html
+    cache: false
+  datasource:
+    url: jdbc:mysql://localhost:3306/community
+    username: root
+    password: root
+    driver-class-name: com.mysql.jdbc.Driver
+    type: com.alibaba.druid.pool.DruidDataSource
+github:
+  client:
+    id: 34038f3472a16896fc81
+    secret: 853e50b3d0b3f55d083f18ce8b3bcf1762dc1917
+  redirect:
+    uri: http://10.103.59.149:8081/community/callback
+
