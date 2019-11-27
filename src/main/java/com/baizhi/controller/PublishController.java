@@ -1,11 +1,15 @@
 package com.baizhi.controller;
 
+import com.baizhi.dto.QuestionDto;
 import com.baizhi.mapper.QuestionMapper;
 import com.baizhi.model.Question;
 import com.baizhi.model.User;
+import com.baizhi.service.QuestionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -18,7 +22,7 @@ import java.util.Map;
 public class PublishController {
 
     @Autowired
-    private QuestionMapper questionMapper;
+    private QuestionService questionService;
 
     @GetMapping({"/publish","publish.html"})
     public String publish(){
@@ -53,13 +57,22 @@ public class PublishController {
             map.put("msg","发布失败");
             return map;
         }
-
-        question.setGmt_create(System.currentTimeMillis());
-        question.setGmt_modified(question.getGmt_create());
         question.setCreator_id(user.getId());
-        questionMapper.create(question);
+        questionService.createOrUpdate(question);
         map.put("msg","发布成功");
         return map;
+
+    }
+
+    @GetMapping("/publish/{id}")
+    public String edit(@PathVariable(name="id") Integer id, Model model){
+
+        QuestionDto question = questionService.getById(id);
+        model.addAttribute("title",question.getTitle());
+        model.addAttribute("description",question.getDescription());
+        model.addAttribute("tags",question.getTags());
+        model.addAttribute("id",question.getId());
+        return "publish";
 
     }
 }
