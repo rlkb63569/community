@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>华山论码</title>
+    <link rel="stylesheet" href="/community/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/community/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="/community/css/mycss.css">
+    <link rel="icon" href="/community/image/logo.png"/>
+    <link rel="stylesheet" href="/community/css/link.css">
+    <script src="/community/js/jquery-3.3.1.min.js"></script>
+    <script src="/community/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <div th:insert="~{navigation.html :: navigation}"></div>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="jumbotron">
+                <h1>出错啦！！！</h1>
+                <p th:text="${message}">服务器太热了！请稍等再...不，它已经凉了。</p>
+                <p><a class="btn btn-primary btn-lg" href="/community/" role="button">回到主页</a></p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

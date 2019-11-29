@@ -89,6 +89,18 @@
           <layout>JAR</layout>
         </configuration>
       </plugin>
+      <plugin>
+      <groupId>org.mybatis.generator</groupId>
+      <artifactId>mybatis-generator-maven-plugin</artifactId>
+      <version>1.4.0</version>
+        <dependencies>
+          <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>5.1.47</version>
+          </dependency>
+        </dependencies>
+    </plugin>
     </plugins>
     <resources>
       <!-- 打包时将jsp文件拷贝到META-INF目录下-->

@@ -2,6 +2,8 @@ package com.baizhi.service;
 
 import com.baizhi.dto.PaginationDto;
 import com.baizhi.dto.QuestionDto;
+import com.baizhi.exception.CustomizeErrorCode;
+import com.baizhi.exception.CustomizeException;
 import com.baizhi.mapper.QuestionMapper;
 import com.baizhi.mapper.UserMapper;
 import com.baizhi.model.Question;
@@ -63,6 +65,9 @@ public class QuestionService {
     public QuestionDto getById(Integer id) {
 
         Question question = questionMapper.getById(id);
+        if(question==null){
+            throw new CustomizeException(CustomizeErrorCode.QUESTION_NOT_FOUNT);
+        }
         User user = userMapper.findById(question.getCreator_id());
         QuestionDto questionDto=new QuestionDto();
         BeanUtils.copyProperties(question,questionDto);
