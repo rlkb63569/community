@@ -26,8 +26,9 @@
                 <div class="media-body">
                     <a th:href="@{'/question/'+${question.id}}"><h4 class="media-heading" th:text="${question.title}"></h4></a>
                     <span class="text-desc">
-                        <span th:text="${question.comment_count}"></span>个回复&nbsp;
-                        <span th:text="${question.like_count}"></span>人点赞 &nbsp;
+                        <span th:text="${question.comment_count}"></span>个回复&nbsp;|
+                        <span th:text="${question.like_count}"></span>人点赞 &nbsp;|
+                        <span th:text="${question.view_count}"></span>次浏览 &nbsp;|
                         <span th:text="${#dates.format(question.gmt_create, 'yyyy-MM-dd')}"></span> 创建
                     </span>
                 </div>
@@ -63,9 +64,9 @@
         </div>
         <div class="col-lg-3">
             <h3>问题发起指南</h3>
-            • 问题标题: 请用精简的语言描述您发布的问题，不超过25字。<br>
+            <h5>• 问题标题: 请用精简的语言描述您发布的问题，不超过25字。<br>
             • 问题补充: 详细补充您的问题内容，并确保问题描述清晰直观, 并提供一些相关的资料。<br>
-            • 选择标签: 选择一个或者多个合适的标签，用逗号隔开，每个标签不超过10个字。
+            • 选择标签: 选择一个或者多个合适的标签，用逗号隔开，每个标签不超过10个字。</h5>
         </div>
     </div>
 </div>

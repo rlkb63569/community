@@ -88,4 +88,8 @@ public class QuestionService {
             questionMapper.edit(question);
         }
     }
+
+    public void incView(Integer id) {
+        questionMapper.updateViewCount(id);
+    }
 }
