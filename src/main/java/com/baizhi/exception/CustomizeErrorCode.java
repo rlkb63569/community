@@ -21,11 +21,11 @@ public enum CustomizeErrorCode implements ErrorCode {
         return code;
     }
 
-    CustomizeErrorCode(String message) {
+    private CustomizeErrorCode(String message) {
         this.message = message;
     }
 
-    CustomizeErrorCode(Integer code,String message){
+    private CustomizeErrorCode(Integer code,String message){
         this.code=code;
         this.message=message;
     }

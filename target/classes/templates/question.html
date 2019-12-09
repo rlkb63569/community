@@ -9,6 +9,30 @@
     <link rel="stylesheet" href="/community/css/link.css">
     <script src="/community/js/jquery-3.3.1.min.js"></script>
     <script src="/community/js/bootstrap.min.js"></script>
+    <script src="/js/community.js"></script>
+    <script>
+        function post() {
+            var questionId = $("#question_id").val();
+            var content = $("#comment_content").val();
+            $.ajax({
+                url: "/community/comment/add",
+                data: {parent_id: questionId, content: content, type: 1},
+                type: "post",
+                dataType: "json",
+                success: function (data) {
+                    if(data.code==2003){
+                        var isAccept=confirm(data.message);
+                        if(isAccept){
+                            window.open("https://github.com/login/oauth/authorize?client_id=34038f3472a16896fc81&redirect_uri=http://10.103.59.149:8081/community/callback&scope=user&state=1");
+                            window.localStorage.setItem("isClosable",true);
+                        }
+                    }else{
+                        alert(data.message);
+                    }
+                }
+            });
+        }
+    </script>
 </head>
 <body style="background-color: #efefef">
 <div th:insert="~{navigation.html :: navigation}"></div>
@@ -27,7 +51,25 @@
             <a th:if="${session.user!=null && question.user.id==question.creator_id}">
                 <span class="glyphicon glyphicon-pencil"></span> 编辑
             </a>
+            <div class="media">
+                <div class="media-left">
+                    <a href="#">
+                        <img class="media-object img-rounded"
+                             th:src="${question.user.avatar_url}"/>
+                    </a>
+                </div>
+                <div class="media-body">
+                    <h5 class="media-heading">
+                        <span th:text="${question.user.name}"></span>
+                    </h5>
+                </div>
+            </div>
+            <input type="hidden" id="question_id" th:value="${question.id}"/>
+            <textarea class="form-control comment" rows="15" id="comment_content"></textarea><br>
+            <button type="button" class="btn btn-success" style="float: right;margin-bottom: 10px" onclick="post()">回复
+            </button>
         </div>
+
         <div class="col-lg-3">
             <div class="list-group">
                 <h4 style="margin-top: 10px">发起人</h4>
