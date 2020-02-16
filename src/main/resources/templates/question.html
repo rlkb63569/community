@@ -3,34 +3,101 @@
     <meta charset="UTF-8">
     <title th:text="查看问题"></title>
     <link rel="stylesheet" href="/community/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/community/css/bootstrap-theme.min.css">
     <link rel="stylesheet" href="/community/css/mycss.css">
     <link rel="icon" href="/community/image/logo.png"/>
     <link rel="stylesheet" href="/community/css/link.css">
     <script src="/community/js/jquery-3.3.1.min.js"></script>
     <script src="/community/js/bootstrap.min.js"></script>
-    <script src="/js/community.js"></script>
     <script>
-        function post() {
-            var questionId = $("#question_id").val();
-            var content = $("#comment_content").val();
+        function post(id, content, type) {
             $.ajax({
                 url: "/community/comment/add",
-                data: {parent_id: questionId, content: content, type: 1},
+                data: {parent_id: id, content: content, type: type},
                 type: "post",
+                processData: false,
                 dataType: "json",
                 success: function (data) {
-                    if(data.code==2003){
-                        var isAccept=confirm(data.message);
-                        if(isAccept){
-                            window.open("https://github.com/login/oauth/authorize?client_id=34038f3472a16896fc81&redirect_uri=http://10.103.59.149:8081/community/callback&scope=user&state=1");
-                            window.localStorage.setItem("isClosable",true);
+                    if (data.code == 200) {
+                        window.location.reload();
+                    } else {
+                        if (data.code == 2003) {
+                            var isAccept = confirm(data.message);
+                            if (isAccept) {
+                                window.localStorage.setItem("isClosable", "true");
+                                window.open("https://github.com/login/oauth/authorize?client_id=34038f3472a16896fc81&redirect_uri=http://10.103.59.149:8081/community/callback&scope=user&state=1");
+                            }
+                        } else {
+                            alert(data.message);
                         }
-                    }else{
-                        alert(data.message);
                     }
                 }
             });
+        }
+
+        function question() {
+            var questionId = $("#question_id").val();
+            var content = $("#comment_content").val();
+            var type = 1;
+            post(questionId, content, type);
+        }
+
+        function comment(e) {
+            debugger;
+            var commentId = e.getAttribute("data-id");
+            var content = $("#input-" + commentId).val();
+            var type = 2;
+            post(commentId, content, type);
+        }
+
+        function collapseComments(e) {
+            var id = e.getAttribute("data-id");
+            var comment = $("#comment-" + id);
+            var collapse = e.getAttribute("data-collapse");
+            if (collapse) {
+                //折叠二级评论
+                comment.removeClass("in");
+                e.removeAttribute("data-collapse");
+                e.classList.remove("active");
+            } else {
+                //展开二级评论
+                if (comment.children().length == 2) {
+                    $.getJSON("/community/comment/" + id, function (data) {
+                        $.each(data.data.reverse(), function (index, item) {
+                            var mediaElement = $("<div>", {
+                                "class": "media",
+                            });
+                            var mediaBodyElement = $("<div>", {
+                                "class": "media-body",
+                            });
+                            var h5 = $("<h5>", {
+                                "class": "media-heading",
+                            }).html(item.user.name);
+                            var content = $("<div>", {}).html(item.content);
+                            var mediaLeftElement = $("<div>", {
+                                "class": "media-left"
+                            });
+                            var avatarElement = $("<img>", {
+                                "class": "media-object img-rounded",
+                                "src": item.user.avatar_url
+                            });
+                            var commentElement = $("<div>", {
+                                "class": "col-lg-12 comments",
+                            });
+                            var hr = $("<hr>");
+                            mediaBodyElement.append(h5).append(content);
+                            mediaLeftElement.append(avatarElement);
+                            mediaElement.append(mediaLeftElement);
+                            mediaElement.append(mediaBodyElement);
+                            mediaElement.append(hr);
+                            commentElement.append(mediaElement);
+                            comment.prepend(commentElement);
+                        });
+                    });
+                }
+                comment.addClass("in");
+                e.setAttribute("data-collapse", "in");
+                e.classList.add("active");
+            }
         }
     </script>
 </head>
@@ -51,6 +118,70 @@
             <a th:if="${session.user!=null && question.user.id==question.creator_id}">
                 <span class="glyphicon glyphicon-pencil"></span> 编辑
             </a>
+            <h2 class="comment_h2"><span th:text="${question.comment_count}"></span> 个评论</h2>
+            <hr class="comment_hr" style="padding-top: 0">
+            <!--一级评论-->
+            <div th:each="comment:${comment}" th:id="${'comment-body-'+comment.id}">
+                <div class="media">
+                    <div class="media-left">
+                        <a href="#">
+                            <img class="media-object img-circle"
+                                 th:src="${comment.user.avatar_url}"/>
+                        </a>
+                    </div>
+                    <div class="media-body">
+                        <h5 class="media-heading">
+                            <span th:text="${comment.user.name}"></span>
+                        </h5>
+                        <div><span th:text="${comment.content}"></span></div>
+                        <div class="btn-toolbar" role="toolbar">
+                            <div class="btn-group menu">
+                                <button type="button" class="btn btn-default">
+                                    <span class="glyphicon glyphicon-thumbs-up icon"></span>
+                                    <span th:text="${comment.like_count}"></span>
+                                </button>
+                                <button type="button" class="btn btn-default" data-toggle="collapse"
+                                        th:data-id="${comment.id}" onclick="collapseComments(this)">
+                                    <span class="glyphicon glyphicon-comment icon"></span>
+                                    <span th:text="${comment.comment_count}"></span>
+                                </button>
+                            </div>
+                        </div>
+                        <span class="pull-right" th:text="${#dates.format(comment.gmt_create,'yyyy-MM-dd')}"></span>
+                    </div>
+                    <!--二级评论-->
+                    <div class="col-lg-12 collapse sub-comments" th:id="${'comment-'+comment.id}">
+                        <div class="col-lg-12 comments" th:each="comment: ${comments}">
+                            <div class="media">
+                                <div class="media-left">
+                                    <a href="#">
+                                        <img class="media-object img-circle"
+                                             th:src="${comment.user.avatar_url}"/>
+                                    </a>
+                                </div>
+                                <div class="media-body">
+                                    <h5 class="media-heading">
+                                        <span th:text="${comment.user.name}"></span>
+                                    </h5>
+                                    <div><span th:text="${comment.content}"></span></div>
+                                </div>
+                                <span class="pull-right"
+                                      th:text="${#dates.format(comment.gmt_create,'yyyy-MM-dd')}"></span>
+                            </div>
+                        </div>
+                        <div class="col-lg-10">
+                            <input type="text" class="form-control" placeholder="评论一下..."
+                                   th:id="${'input-'+comment.id}"/>
+                        </div>
+                        <div class="col-lg-2">
+                            <button type="button" class="btn btn-success" onclick="comment(this)"
+                                    th:data-id="${comment.id}">评论
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+            </div>
             <div class="media">
                 <div class="media-left">
                     <a href="#">
@@ -66,8 +197,10 @@
             </div>
             <input type="hidden" id="question_id" th:value="${question.id}"/>
             <textarea class="form-control comment" rows="15" id="comment_content"></textarea><br>
-            <button type="button" class="btn btn-success" style="float: right;margin-bottom: 10px" onclick="post()">回复
+            <button type="button" class="btn btn-success" style="float: right;margin-bottom: 10px" onclick="question()">
+                回复
             </button>
+
         </div>
 
         <div class="col-lg-3">

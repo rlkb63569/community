@@ -3,6 +3,8 @@ package com.baizhi.mapper;
 import com.baizhi.model.User;
 import org.apache.ibatis.annotations.*;
 
+import java.util.List;
+
 @Mapper
 public interface UserMapper {
 
@@ -23,4 +25,5 @@ public interface UserMapper {
 
     @Update("update user set name=#{name},token=#{token},gmt_modified=#{gmt_modified},avatar_url=#{avatar_url} where id=#{id}")
     void update(User dbUser);
+
 }

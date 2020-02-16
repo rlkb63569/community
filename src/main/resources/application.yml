@@ -20,5 +20,5 @@ github:
     id: 34038f3472a16896fc81
     secret: 853e50b3d0b3f55d083f18ce8b3bcf1762dc1917
   redirect:
-    uri: http://10.103.59.149:8081/community/callback
+    uri: http://59.110.236.8:8081/community/callback
 

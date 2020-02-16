@@ -3,7 +3,6 @@
     <meta charset="UTF-8">
     <title>华山论码</title>
     <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/bootstrap-theme.min.css">
     <link rel="stylesheet" href="css/mycss.css">
     <link rel="icon" href="image/logo.png"/>
     <link rel="stylesheet" href="css/link.css">
@@ -11,11 +10,12 @@
     <script src="js/bootstrap.min.js"></script>
     <script>
         $(function () {
+            debugger;
             var isClosable=window.localStorage.getItem("isClosable");
-            if(isClosable){
+            if(isClosable=="true"){
                 window.close();
-                window.localStorage.removeItem("isClosable");
             }
+            window.localStorage.removeItem("isClosable");
         });
     </script>
 </head>
