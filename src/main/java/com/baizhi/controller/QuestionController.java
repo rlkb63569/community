@@ -25,17 +25,17 @@ public class QuestionController {
 
     @GetMapping("/question/{id}")
     public String question(@PathVariable(name="id") Integer id, Model model){
-
         questionService.incView(id);
         QuestionDto questionDto = questionService.getById(id);
         if(questionDto==null){
             throw new CustomizeException(CustomizeErrorCode.QUESTION_NOT_FOUNT);
         }
         List<CommentDto> commentDto = commentService.getByQuestionId(questionDto.getId());
+        List<QuestionDto> questionDtos = questionService.selectRelated(questionDto);
+        model.addAttribute("relatedQuestions",questionDtos);
         model.addAttribute("question",questionDto);
         model.addAttribute("comment",commentDto);
         return "question";
-
     }
 
 }

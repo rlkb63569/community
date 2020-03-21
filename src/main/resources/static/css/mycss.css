@@ -59,3 +59,13 @@ a{
     border-radius:5px;
     padding-bottom:10px;
 }
+.question-tag{
+    margin-right:5px;
+}
+.question-related{
+    font-size:12px;
+
+}
+.publish-tag-tab{
+    display:none;
+}

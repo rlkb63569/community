@@ -4,11 +4,39 @@
     <title th:text="查看问题"></title>
     <link rel="stylesheet" href="/community/css/bootstrap.min.css">
     <link rel="stylesheet" href="/community/css/mycss.css">
-    <link rel="icon" href="/community/image/logo.png"/>
+    <link rel="icon" href="/community/image/logo.png">
     <link rel="stylesheet" href="/community/css/link.css">
+    <link rel="stylesheet" href="/community/editormd/css/editormd.css">
+    <link rel="stylesheet" href="/community/editormd/css/editormd.preview.css">
     <script src="/community/js/jquery-3.3.1.min.js"></script>
     <script src="/community/js/bootstrap.min.js"></script>
-    <script>
+    <script src="/community/editormd/editormd.js"></script>
+    <script src="/community/editormd/lib/marked.min.js"></script>
+    <script src="/community/editormd/lib/prettify.min.js"></script>
+    <script type="text/javascript">
+        $(function(){
+            var editor = editormd("question-comment", {
+                width  : "100%",
+                height : "50%",
+                path: "/community/editormd/lib/",
+                delay:0,
+                watch:false,
+                placeholder:"请输入问题描述..."
+            });
+        });
+
+        $(function (){
+            editormd.markdownToHTML("question-view",{
+                htmlDecode: "style,script,iframe",
+                emoji: true,
+                taskList: true,
+                tex: true, // 默认不解析
+                flowChart: true, // 默认不解析
+                sequenceDiagram: true, // 默认不解析
+                codeFold: true,
+            });
+        });
+
         function post(id, content, type) {
             $.ajax({
                 url: "/community/comment/add",
@@ -113,13 +141,24 @@
                 <span th:text="${#dates.format(question.gmt_create, 'yyyy-MM-dd')}"></span> 创建
             </span>
             <hr>
-            <span th:text="${question.description}"></span>
+            <!--内容-->
+            <div class="col-lg-12" id="question-view" style="margin-top: 10px; margin-bottom: 10px;">
+                <textarea style="display:none;" th:text="${question.description}"></textarea>
+            </div>
             <hr>
+            <!--标签-->
+<!--            <div class="col-lg-12">-->
+<!--                <span class="label label-info" th:each="tag : ${question.tags.split(',')}">-->
+<!--                    <span class="label label-info question-tag" th:text="${tag}"></span>-->
+<!--                </span>-->
+<!--            </div>-->
             <a th:if="${session.user!=null && question.user.id==question.creator_id}">
                 <span class="glyphicon glyphicon-pencil"></span> 编辑
             </a>
-            <h2 class="comment_h2"><span th:text="${question.comment_count}"></span> 个评论</h2>
-            <hr class="comment_hr" style="padding-top: 0">
+            <div class="col-lg-12">
+                <h2 class="comment_h2"><span th:text="${question.comment_count}"></span> 个评论</h2>
+            </div>
+            <hr>
             <!--一级评论-->
             <div th:each="comment:${comment}" th:id="${'comment-body-'+comment.id}">
                 <div class="media">
@@ -180,8 +219,8 @@
                         </div>
                     </div>
                 </div>
-                <hr>
             </div>
+            <hr>
             <div class="media">
                 <div class="media-left">
                     <a href="#">
@@ -196,7 +235,10 @@
                 </div>
             </div>
             <input type="hidden" id="question_id" th:value="${question.id}"/>
-            <textarea class="form-control comment" rows="15" id="comment_content"></textarea><br>
+            <div id="question-comment">
+                <textarea class="form-control comment" id="comment_content"></textarea>
+            </div>
+            <br>
             <button type="button" class="btn btn-success" style="float: right;margin-bottom: 10px" onclick="question()">
                 回复
             </button>
@@ -221,6 +263,11 @@
                 </div>
                 <hr>
                 <h4>相关问题</h4>
+                <ul class="question-related">
+                    <li th:each="related:${relatedQuestions}">
+                        <a th:href="@{'/question/'+${related}}" th:text="${related.title}"></a>
+                    </li>
+                </ul>
             </div>
         </div>
     </div>
