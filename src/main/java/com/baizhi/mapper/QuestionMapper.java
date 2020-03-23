@@ -14,10 +14,10 @@ public interface QuestionMapper {
     @Select("select * from question limit #{offset},#{size}")
     List<Question> list(@Param("offset") Integer offset,@Param("size") Integer size);
 
-    @Select("select count(1) from question")
-    Integer count();
+    @Select("select count(*) from question where title regexp #{search}")
+    Integer count(@Param("search")String search);
 
-    @Select("select count(1) from question where id=#{id}")
+    @Select("select count(*) from question where id=#{id}")
     Integer countById(@Param("id") Integer id);
 
     @Select("select * from question where id=#{id} limit #{offset},#{size}")
@@ -28,4 +28,13 @@ public interface QuestionMapper {
 
     @Update("update question set title=#{title},description=#{description},tags=#{tags},gmt_modified=#{gmt_modified} where id=#{id}")
     void edit(Question question);
+
+    @Update("update question set view_count=view_count+1 where id=#{id}")
+    void updateViewCount(Integer id);
+
+    @Update("update question set comment_count = comment_count+1 where id=#{id}")
+    void incCommentCount(Question question);
+
+    @Select("select * from question where id!=#{id} and tags regexp #{tags}")
+    List<Question> selectRelated(Question question);
 }

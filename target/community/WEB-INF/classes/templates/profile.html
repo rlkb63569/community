@@ -1,0 +1,98 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="sectionName"></title>
+    <link rel="stylesheet" href="/community/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/community/css/mycss.css">
+    <link rel="icon" href="/community/image/logo.png"/>
+    <link rel="stylesheet" href="/community/css/link.css">
+    <script src="/community/js/jquery-3.3.1.min.js"></script>
+    <script src="/community/js/bootstrap.min.js"></script>
+    <script>
+        $(function () {
+            $("#btn").click(function () {
+                var title =$("#title").val();
+                var description =$("#description").val();
+                var tags =$("#tag").val();
+                $.ajax({
+                    url:"/community/publish",
+                    type:"post",
+                    data:{title:title,description:description,tags:tags},
+                    dataType:"text",
+                    success:function (data) {
+                        if (data=="发布成功"){
+                            location.href="http://10.103.59.149:8081/community/";
+                        } else{
+                            $("#msg").attr("style","display:block;")
+                        }
+                    }
+                });
+            });
+        })
+    </script>
+</head>
+<body style="background-color: #efefef">
+<div th:insert="~{navigation.html :: navigation}"></div>
+<div class="container" style="background-color: white">
+    <div class="row">
+        <div class="col-lg-9">
+            <h3><span th:text="${sectionName}"></span></h3>
+            <hr>
+            <div class="media" th:each="question:${pagination.questions}">
+                <div class="media-left">
+                    <a href="#">
+                        <img class="media-object" th:src="${question.user.avatar_url}" alt="..."/>
+                    </a>
+                </div>
+                <div class="media-body">
+                    <a href="#"><h4 class="media-heading" th:text="${question.title}"></h4></a>
+                    <span class="text-desc">
+                        <span th:text="${question.comment_count}"></span>个回复&nbsp;
+                        <span th:text="${question.like_count}"></span>人点赞 &nbsp;
+                        <span th:text="${#dates.format(question.gmt_create, 'yyyy-MM-dd')}"></span> 创建
+                    </span>
+                </div>
+                <br>
+            </div>
+            <nav aria-label="Page navigation pagination-right">
+                <ul class="pagination">
+                    <li th:if="${pagination.showFirstPage==true}">
+                        <a th:href="@{/profile/{section}/(section=${section},page=1)}" aria-label="Previous">
+                            <span aria-hidden="true">&lt;&lt;</span>
+                        </a>
+                    </li>
+                    <li th:if="${pagination.showPrevious==true}">
+                        <a th:href="@{/profile/{section}/(section=${section},page=${pagination.page-1})}" aria-label="Previous">
+                            <span aria-hidden="true">&lt;</span>
+                        </a>
+                    </li>
+                    <li th:each="page : ${pagination.pages}" th:class="${pagination.page==page}?'active':''">
+                        <a th:href="@{/profile/{section}/(section=${section},page=${page})}" th:text="${page}"></a>
+                    </li>
+                    <li th:if="${pagination.showNext==true}">
+                        <a th:href="@{/profile/{section}/(section=${section},page=${pagination.page+1})}" aria-label="Next">
+                            <span aria-hidden="true">&gt;</span>
+                        </a>
+                    </li>
+                    <li th:if="${pagination.showEndPage==true}">
+                        <a th:href="@{/profile/{section}/(section=${section},page=${pagination.totalPage})}" aria-label="Next">
+                            <span aria-hidden="true">&gt;&gt;</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+        <div class="col-lg-3">
+            <div class="list-group">
+                <a href="/community/profile/questions" class="list-group-item" th:classappend="${section=='questions'}?'active':''">我的提问</a>
+                <a href="/community/profile/replies" class="list-group-item" th:classappend="${section=='replies'}?'active':''">最新回复</a>
+<!--                <a href="#" class="list-group-item">Morbi leo risus</a>-->
+<!--                <a href="#" class="list-group-item">Porta ac consectetur ac</a>-->
+<!--                <a href="#" class="list-group-item">Vestibulum at eros</a>-->
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

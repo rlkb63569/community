@@ -13,9 +13,9 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Accessors(chain=true)
-public class PaginationDto {
+public class PaginationDto<T> {
 
-    private List<QuestionDto> questions;
+    private List<T> data;
     private Boolean showPrevious=true;
     private Boolean showFirstPage=true;
     private Boolean showEndPage=true;

@@ -1,0 +1,1 @@
+#{notifier},#{receiver},#{outerId},#{type},#{gmt_create},#{status}

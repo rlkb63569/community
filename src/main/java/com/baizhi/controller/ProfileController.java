@@ -1,7 +1,9 @@
 package com.baizhi.controller;
 
 import com.baizhi.dto.PaginationDto;
+import com.baizhi.model.Notification;
 import com.baizhi.model.User;
+import com.baizhi.service.NotificationService;
 import com.baizhi.service.QuestionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -17,6 +19,9 @@ public class ProfileController {
 
     @Autowired
     private QuestionService questionService;
+
+    @Autowired
+    private NotificationService notificationService;
 
     @GetMapping("/profile/{action}")
     public String profile(@PathVariable(name="action") String action, Model model, HttpServletRequest request,

@@ -1,14 +1,132 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title th:text="sectionName"></title>
+    <title th:text="查看问题"></title>
     <link rel="stylesheet" href="/community/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/community/css/bootstrap-theme.min.css">
     <link rel="stylesheet" href="/community/css/mycss.css">
-    <link rel="icon" href="/community/image/logo.png"/>
+    <link rel="icon" href="/community/image/logo.png">
     <link rel="stylesheet" href="/community/css/link.css">
+    <link rel="stylesheet" href="/community/editormd/css/editormd.css">
+    <link rel="stylesheet" href="/community/editormd/css/editormd.preview.css">
     <script src="/community/js/jquery-3.3.1.min.js"></script>
     <script src="/community/js/bootstrap.min.js"></script>
+    <script src="/community/editormd/editormd.js"></script>
+    <script src="/community/editormd/lib/marked.min.js"></script>
+    <script src="/community/editormd/lib/prettify.min.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            var editor = editormd("question-comment", {
+                width: "100%",
+                height: "50%",
+                path: "/community/editormd/lib/",
+                delay: 0,
+                watch: false,
+                placeholder: "请输入问题描述..."
+            });
+        });
+
+        $(function () {
+            editormd.markdownToHTML("question-view", {
+                htmlDecode: "style,script,iframe",
+                emoji: true,
+                taskList: true,
+                tex: true, // 默认不解析
+                flowChart: true, // 默认不解析
+                sequenceDiagram: true, // 默认不解析
+                codeFold: true,
+            });
+        });
+
+        function post(id, content, type) {
+            $.ajax({
+                url: "/community/comment/add",
+                data: {parent_id: id, content: content, type: type},
+                type: "post",
+                // processData: false,
+                dataType: "json",
+                success: function (data) {
+                    if (data.code == 200) {
+                        window.location.reload();
+                    } else {
+                        if (data.code == 2003) {
+                            var isAccept = confirm(data.message);
+                            if (isAccept) {
+                                window.localStorage.setItem("isClosable", "true");
+                                window.open("https://github.com/login/oauth/authorize?client_id=34038f3472a16896fc81&redirect_uri=http://localhost:8081/community/callback&scope=user&state=1");
+                            }
+                        } else {
+                            alert(data.message);
+                        }
+                    }
+                }
+            });
+        }
+
+        function question() {
+            var questionId = $("#question_id").val();
+            var content = $("#comment_content").val();
+            var type = 1;
+            post(questionId, content, type);
+        }
+
+        function comment(e) {
+            var commentId = e.getAttribute("data-id");
+            var content = $("#input-" + commentId).val();
+            var type = 2;
+            post(commentId, content, type);
+        }
+
+        function collapseComments(e) {
+            var id = e.getAttribute("data-id");
+            var comment = $("#comment-" + id);
+            var collapse = e.getAttribute("data-collapse");
+            if (collapse) {
+                //折叠二级评论
+                comment.removeClass("in");
+                e.removeAttribute("data-collapse");
+                e.classList.remove("active");
+            } else {
+                //展开二级评论
+                if (comment.children().length == 2) {
+                    $.getJSON("/community/comment/" + id, function (data) {
+                        $.each(data.data.reverse(), function (index, item) {
+                            var mediaElement = $("<div>", {
+                                "class": "media",
+                            });
+                            var mediaBodyElement = $("<div>", {
+                                "class": "media-body",
+                            });
+                            var h5 = $("<h5>", {
+                                "class": "media-heading",
+                            }).html(item.user.name);
+                            var content = $("<div>", {}).html(item.content);
+                            var mediaLeftElement = $("<div>", {
+                                "class": "media-left"
+                            });
+                            var avatarElement = $("<img>", {
+                                "class": "media-object img-rounded",
+                                "src": item.user.avatar_url
+                            });
+                            var commentElement = $("<div>", {
+                                "class": "col-lg-12 comments",
+                            });
+                            var hr = $("<hr>");
+                            mediaBodyElement.append(h5).append(content);
+                            mediaLeftElement.append(avatarElement);
+                            mediaElement.append(mediaLeftElement);
+                            mediaElement.append(mediaBodyElement);
+                            mediaElement.append(hr);
+                            commentElement.append(mediaElement);
+                            comment.prepend(commentElement);
+                        });
+                    });
+                }
+                comment.addClass("in");
+                e.setAttribute("data-collapse", "in");
+                e.classList.add("active");
+            }
+        }
+    </script>
 </head>
 <body style="background-color: #efefef">
 <div th:insert="~{navigation.html :: navigation}"></div>
@@ -22,12 +140,111 @@
                 <span th:text="${#dates.format(question.gmt_create, 'yyyy-MM-dd')}"></span> 创建
             </span>
             <hr>
-            <span th:text="${question.description}"></span>
+            <!--内容-->
+            <div class="col-lg-12" id="question-view" style="margin-top: 10px; margin-bottom: 10px;">
+                <textarea style="display:none;" th:text="${question.description}"></textarea>
+            </div>
             <hr>
+<!--            标签-->
+<!--                        <div class="col-lg-12">-->
+<!--                            <span class="label label-info" th:each="tag : ${question.tags.split(',')}">-->
+<!--                                <span class="label label-info question-tag" th:text="${tag}"></span>-->
+<!--                            </span>-->
+<!--                        </div>-->
             <a th:if="${session.user!=null && question.user.id==question.creator_id}">
                 <span class="glyphicon glyphicon-pencil"></span> 编辑
             </a>
+            <div class="col-lg-12">
+                <h2 class="comment_h2"><span th:text="${question.comment_count}"></span> 个评论</h2>
+            </div>
+            <hr>
+            <!--一级评论-->
+            <div th:each="comment:${comment}" th:id="${'comment-body-'+comment.id}">
+                <div th:text="${commentStat.index+1}"></div>
+                <div class="media">
+                    <div class="media-left">
+                        <a href="#">
+                            <img class="media-object img-circle"
+                                 th:src="${comment.user.avatar_url}"/>
+                        </a>
+                    </div>
+                    <div class="media-body">
+                        <h5 class="media-heading">
+                            <span th:text="${comment.user.name}"></span>
+                        </h5>
+                        <div><span th:text="${comment.content}"></span></div>
+                        <div class="btn-toolbar" role="toolbar">
+                            <div class="btn-group menu">
+                                <button type="button" class="btn btn-default">
+                                    <span class="glyphicon glyphicon-thumbs-up icon"></span>
+                                    <span th:text="${comment.like_count}"></span>
+                                </button>
+                                <button type="button" class="btn btn-default" data-toggle="collapse"
+                                        th:data-id="${comment.id}" onclick="collapseComments(this)">
+                                    <span class="glyphicon glyphicon-comment icon"></span>
+                                    <span th:text="${comment.comment_count}"></span>
+                                </button>
+                            </div>
+                        </div>
+                        <span class="pull-right" th:text="${#dates.format(comment.gmt_create,'yyyy-MM-dd')}"></span>
+                    </div>
+                    <!--二级评论-->
+                    <div class="col-lg-12 collapse sub-comments" th:id="${'comment-'+comment.id}">
+                        <div class="col-lg-12 comments" th:each="comment: ${comments}">
+                            <div class="media">
+                                <div class="media-left">
+                                    <a href="#">
+                                        <img class="media-object img-circle"
+                                             th:src="${comment.user.avatar_url}"/>
+                                    </a>
+                                </div>
+                                <div class="media-body">
+                                    <h5 class="media-heading">
+                                        <span th:text="${comment.user.name}"></span>
+                                    </h5>
+                                    <div><span th:text="${comment.content}"></span></div>
+                                </div>
+                                <span class="pull-right"
+                                      th:text="${#dates.format(comment.gmt_create,'yyyy-MM-dd')}"></span>
+                            </div>
+                        </div>
+                        <div class="col-lg-10">
+                            <input type="text" class="form-control" placeholder="评论一下..."
+                                   th:id="${'input-'+comment.id}"/>
+                        </div>
+                        <div class="col-lg-2">
+                            <button type="button" class="btn btn-success" onclick="comment(this)"
+                                    th:data-id="${comment.id}">评论
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <div class="media">
+                <div class="media-left">
+                    <a href="#">
+                        <img class="media-object img-rounded"
+                             th:src="${session.user != null ?  session.user.avatar_url : '../image/我的默认.png'}"/>
+                    </a>
+                </div>
+                <div class="media-body">
+                    <h5 class="media-heading">
+                        <span th:text="${session.user != null ? session.user.name : '匿名用户' }"></span>
+                    </h5>
+                </div>
+            </div>
+            <input type="hidden" id="question_id" th:value="${question.id}"/>
+            <div id="question-comment">
+                <textarea class="form-control comment" id="comment_content"></textarea>
+            </div>
+            <br>
+            <button type="button" class="btn btn-success" style="float: right;margin-bottom: 10px" onclick="question()">
+                回复
+            </button>
+
         </div>
+
         <div class="col-lg-3">
             <div class="list-group">
                 <h4 style="margin-top: 10px">发起人</h4>
@@ -46,6 +263,11 @@
                 </div>
                 <hr>
                 <h4>相关问题</h4>
+                <ul class="question-related">
+                    <li th:each="related:${relatedQuestions}">
+                        <a th:href="@{'/question/'+${related}}" th:text="${related.title}"></a>
+                    </li>
+                </ul>
             </div>
         </div>
     </div>

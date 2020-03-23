@@ -3,7 +3,6 @@
     <meta charset="UTF-8">
     <title th:text="sectionName"></title>
     <link rel="stylesheet" href="/community/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/community/css/bootstrap-theme.min.css">
     <link rel="stylesheet" href="/community/css/mycss.css">
     <link rel="icon" href="/community/image/logo.png"/>
     <link rel="stylesheet" href="/community/css/link.css">
@@ -39,7 +38,7 @@
         <div class="col-lg-9">
             <h3><span th:text="${sectionName}"></span></h3>
             <hr>
-            <div class="media" th:each="question:${pagination.questions}">
+            <div class="media" th:each="question:${pagination.data}">
                 <div class="media-left">
                     <a href="#">
                         <img class="media-object" th:src="${question.user.avatar_url}" alt="..."/>
@@ -86,10 +85,10 @@
         <div class="col-lg-3">
             <div class="list-group">
                 <a href="/community/profile/questions" class="list-group-item" th:classappend="${section=='questions'}?'active':''">我的提问</a>
-                <a href="/community/profile/replies" class="list-group-item" th:classappend="${section=='replies'}?'active':''">最新回复</a>
-<!--                <a href="#" class="list-group-item">Morbi leo risus</a>-->
-<!--                <a href="#" class="list-group-item">Porta ac consectetur ac</a>-->
-<!--                <a href="#" class="list-group-item">Vestibulum at eros</a>-->
+                <a href="/community/profile/replies" class="list-group-item" th:classappend="${section=='replies'}?'active':''">
+                    最新回复 <span class="badge" th:text="14"></span>
+                </a>
+
             </div>
         </div>
     </div>

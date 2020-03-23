@@ -11,7 +11,7 @@
     margin-right: -15px;
     margin-left: -15px;
 }
-body, input, button, select, textarea, h1, h2, h3, h4, h5, h6,label {
+body, input, button, select, textarea, h1, h2, h3, h4, h5, h6,label ,div , span {
     font-family: candara,"Helvetica Neue",Helvetica,Arial,"PingFang SC","Hiragino Sans GB","WenQuanYi Micro Hei","Microsoft Yahei",sans-serif, -apple-system;
     -webkit-font-smoothing: antialiased;
 }
@@ -22,4 +22,50 @@ h1, h2, h3, h4, h5, h6,label {
 a{
     color: #155faa;
     text-decoration: none;
+}
+.comment{
+    margin: 10px 0;
+}
+.comment_h2{
+    height: 60px;
+    line-height: 60px;
+    margin: 0;
+    font-size: 20px;
+    color: #333;
+    font-family: ;
+    -webkit-font-smoothing: ;
+    line-height: 2.5;
+}
+.comment_hr{
+    margin-top: 0;
+}
+.menu{
+    margin-top:12px;
+    cursor:pointer;
+}
+.menu .icon{
+    color:#999;
+}
+.menu .active{
+    color:#499ef3;
+}
+.menu .icon:hover{
+    color:#499ef3;
+}
+.sub-comments{
+    padding-top:10px;
+    border:solid,1px;
+    border-color:#eee;
+    border-radius:5px;
+    padding-bottom:10px;
+}
+.question-tag{
+    margin-right:5px;
+}
+.question-related{
+    font-size:12px;
+
+}
+.publish-tag-tab{
+    display:none;
 }
