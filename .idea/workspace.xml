@@ -2,36 +2,50 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="da5882b5-c129-4610-869e-efbadb05593b" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/8dd1c1d4-8866-4a2d-9ee0-5d39d242495d.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/8dd1c1d4-8866-4a2d-9ee0-5d39d242495d.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/baizhi/aa.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/baizhi/aa.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/baizhi/controller/ProfileController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/baizhi/controller/ProfileController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/baizhi/controller/PublishController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/baizhi/controller/PublishController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/baizhi/controller/QuestionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/baizhi/controller/QuestionController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/baizhi/dto/PaginationDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/baizhi/dto/PaginationDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/baizhi/advice/CustomizeExceptionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/baizhi/advice/CustomizeExceptionHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/baizhi/controller/IndexController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/baizhi/controller/IndexController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/baizhi/mapper/QuestionMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/baizhi/mapper/QuestionMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/baizhi/service/CommentService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/baizhi/service/CommentService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/baizhi/service/QuestionService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/baizhi/service/QuestionService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/static/css/mycss.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/css/mycss.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/navigation.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/navigation.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/profile.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/profile.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/publish.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/publish.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/question.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/question.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/baizhi/controller/ProfileController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/baizhi/controller/ProfileController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/baizhi/controller/PublishController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/baizhi/controller/PublishController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/baizhi/controller/QuestionController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/baizhi/controller/QuestionController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/baizhi/dto/PaginationDto.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/baizhi/dto/PaginationDto.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/baizhi/advice/CustomizeExceptionHandler.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/baizhi/controller/IndexController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/baizhi/controller/IndexController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/baizhi/mapper/QuestionMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/baizhi/mapper/QuestionMapper.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/baizhi/service/CommentService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/baizhi/service/CommentService.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/baizhi/service/QuestionService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/baizhi/service/QuestionService.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/static/css/mycss.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/css/mycss.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/editormd/docs/fonts/OpenSans-Bold-webfont.eot" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/editormd/docs/fonts/OpenSans-Bold-webfont.eot" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/editormd/docs/fonts/OpenSans-Bold-webfont.woff" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/editormd/docs/fonts/OpenSans-Bold-webfont.woff" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/editormd/docs/fonts/OpenSans-BoldItalic-webfont.eot" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/editormd/docs/fonts/OpenSans-BoldItalic-webfont.eot" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/editormd/docs/fonts/OpenSans-BoldItalic-webfont.woff" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/editormd/docs/fonts/OpenSans-BoldItalic-webfont.woff" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/editormd/docs/fonts/OpenSans-Italic-webfont.eot" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/editormd/docs/fonts/OpenSans-Italic-webfont.eot" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/editormd/docs/fonts/OpenSans-Italic-webfont.woff" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/editormd/docs/fonts/OpenSans-Italic-webfont.woff" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/editormd/docs/fonts/OpenSans-Light-webfont.eot" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/editormd/docs/fonts/OpenSans-Light-webfont.eot" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/editormd/docs/fonts/OpenSans-Light-webfont.woff" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/editormd/docs/fonts/OpenSans-Light-webfont.woff" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/editormd/docs/fonts/OpenSans-LightItalic-webfont.eot" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/editormd/docs/fonts/OpenSans-LightItalic-webfont.eot" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/editormd/docs/fonts/OpenSans-LightItalic-webfont.woff" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/editormd/docs/fonts/OpenSans-LightItalic-webfont.woff" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/editormd/docs/fonts/OpenSans-Regular-webfont.eot" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/editormd/docs/fonts/OpenSans-Regular-webfont.eot" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/editormd/docs/fonts/OpenSans-Regular-webfont.woff" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/editormd/docs/fonts/OpenSans-Regular-webfont.woff" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/editormd/fonts/FontAwesome.otf" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/editormd/fonts/FontAwesome.otf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/editormd/fonts/editormd-logo.eot" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/editormd/fonts/editormd-logo.eot" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/editormd/fonts/editormd-logo.ttf" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/editormd/fonts/editormd-logo.ttf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/editormd/fonts/editormd-logo.woff" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/editormd/fonts/editormd-logo.woff" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/editormd/fonts/fontawesome-webfont.eot" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/editormd/fonts/fontawesome-webfont.eot" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/editormd/fonts/fontawesome-webfont.ttf" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/editormd/fonts/fontawesome-webfont.ttf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/editormd/fonts/fontawesome-webfont.woff" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/editormd/fonts/fontawesome-webfont.woff" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/editormd/fonts/fontawesome-webfont.woff2" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/editormd/fonts/fontawesome-webfont.woff2" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/editormd/images/logos/editormd-favicon-16x16.ico" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/editormd/images/logos/editormd-favicon-16x16.ico" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/editormd/images/logos/editormd-favicon-24x24.ico" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/editormd/images/logos/editormd-favicon-24x24.ico" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/editormd/images/logos/editormd-favicon-32x32.ico" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/editormd/images/logos/editormd-favicon-32x32.ico" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/editormd/images/logos/editormd-favicon-48x48.ico" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/editormd/images/logos/editormd-favicon-48x48.ico" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/editormd/images/logos/editormd-favicon-64x64.ico" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/editormd/images/logos/editormd-favicon-64x64.ico" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/templates/navigation.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/navigation.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/profile.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/profile.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/publish.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/publish.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/templates/question.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/question.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -60,6 +74,33 @@
         <item name="mysql" type="feb32156:DbDataSourceImpl" />
         <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
       </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="mysql" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="community: schema" type="76f4a085:MysqlImplModel$Schema" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="mysql" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="community: schema" type="76f4a085:MysqlImplModel$Schema" />
+        <item name="comment: table" type="285a2a93:MysqlImplModel$Table" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="mysql" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="community: schema" type="76f4a085:MysqlImplModel$Schema" />
+        <item name="question: table" type="285a2a93:MysqlImplModel$Table" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="mysql" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="community: schema" type="76f4a085:MysqlImplModel$Schema" />
+        <item name="user: table" type="285a2a93:MysqlImplModel$Table" />
+      </path>
     </expand>
     <select />
   </component>
@@ -69,12 +110,12 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="HTML File" />
         <option value="FxmlFile" />
         <option value="JavaScript File" />
         <option value="Enum" />
         <option value="Interface" />
         <option value="Class" />
+        <option value="HTML File" />
       </list>
     </option>
   </component>
@@ -132,7 +173,7 @@
     <property name="aspect.path.notification.shown" value="true" />
     <property name="database.console.LAST_STATE" value="false" />
     <property name="extract.method.default.visibility" value="private" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/resources/static/fonts" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/resources/static/image" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -148,20 +189,20 @@
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
-    <key name="CreateClassDialog.RecentsKey">
-      <recent name="com.baizhi.service" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="F:\workspace\community\src\main\resources\static\fonts" />
-      <recent name="F:\workspace\community\src\main\resources\static\css" />
-      <recent name="F:\workspace\community\src\main\resources\static\js" />
-      <recent name="F:\workspace\community" />
-      <recent name="F:\workspace\community\src\main\resources\templates" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="F:\workspace\community\src\main\resources\static" />
       <recent name="F:\workspace\community\src\main\resources" />
       <recent name="F:\workspace\community\src\main\resources\static\js" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="F:\workspace\community\src\main\resources\static\image" />
+      <recent name="F:\workspace\community\src\main\resources\static\fonts" />
+      <recent name="F:\workspace\community\src\main\resources\static\css" />
+      <recent name="F:\workspace\community\src\main\resources\static\js" />
+      <recent name="F:\workspace\community" />
+    </key>
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="com.baizhi.service" />
     </key>
   </component>
   <component name="RunManager">
@@ -288,6 +329,9 @@
       <workItem from="1584757361955" duration="166000" />
       <workItem from="1584757564622" duration="36000" />
       <workItem from="1584757612164" duration="189000" />
+      <workItem from="1584788186113" duration="8947000" />
+      <workItem from="1584982664093" duration="7001000" />
+      <workItem from="1584981451388" duration="769000" />
     </task>
     <servers />
   </component>
@@ -303,38 +347,38 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="574" y="128" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824@0.0.1536.824" timestamp="1583078519523" />
-    <state width="1493" height="215" key="GridCell.Tab.0.bottom" timestamp="1584757801139">
+    <state width="1493" height="317" key="GridCell.Tab.0.bottom" timestamp="1584983860314">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="215" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1584757801139" />
-    <state width="1493" height="215" key="GridCell.Tab.0.center" timestamp="1584757801139">
+    <state width="1493" height="317" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1584983860314" />
+    <state width="1493" height="317" key="GridCell.Tab.0.center" timestamp="1584983860314">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="215" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1584757801139" />
-    <state width="1493" height="215" key="GridCell.Tab.0.left" timestamp="1584757801139">
+    <state width="1493" height="317" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1584983860314" />
+    <state width="1493" height="317" key="GridCell.Tab.0.left" timestamp="1584983860314">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="215" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1584757801139" />
-    <state width="1493" height="215" key="GridCell.Tab.0.right" timestamp="1584757801139">
+    <state width="1493" height="317" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1584983860314" />
+    <state width="1493" height="317" key="GridCell.Tab.0.right" timestamp="1584983860314">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="215" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1584757801139" />
-    <state width="1493" height="215" key="GridCell.Tab.1.bottom" timestamp="1584757801139">
+    <state width="1493" height="317" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1584983860314" />
+    <state width="1493" height="317" key="GridCell.Tab.1.bottom" timestamp="1584983860315">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="215" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1584757801139" />
-    <state width="1493" height="215" key="GridCell.Tab.1.center" timestamp="1584757801139">
+    <state width="1493" height="317" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1584983860315" />
+    <state width="1493" height="317" key="GridCell.Tab.1.center" timestamp="1584983860315">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="215" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1584757801139" />
-    <state width="1493" height="215" key="GridCell.Tab.1.left" timestamp="1584757801139">
+    <state width="1493" height="317" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1584983860315" />
+    <state width="1493" height="317" key="GridCell.Tab.1.left" timestamp="1584983860315">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="215" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1584757801139" />
-    <state width="1493" height="215" key="GridCell.Tab.1.right" timestamp="1584757801139">
+    <state width="1493" height="317" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1584983860315" />
+    <state width="1493" height="317" key="GridCell.Tab.1.right" timestamp="1584983860315">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="215" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1584757801139" />
+    <state width="1493" height="317" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1584983860315" />
     <state x="89" y="66" width="992" height="711" key="SettingsEditor" timestamp="1582601336500">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -363,9 +407,25 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="470" y="39" key="refactoring.ChangeSignatureDialog/0.0.1536.824@0.0.1536.824" timestamp="1583077072704" />
-    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1584760044263">
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1584983097784">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1584760044263" />
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1584983097784" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/baizhi/controller/CommentController.java</url>
+          <line>29</line>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/baizhi/service/QuestionService.java</url>
+          <line>34</line>
+          <option name="timeStamp" value="7" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

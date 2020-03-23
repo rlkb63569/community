@@ -1,0 +1,15 @@
+2020-03-24 01:01:48.562  INFO 1608 --- [main] com.baizhi.Community                     : Starting Community on CX with PID 1608 (F:\workspace\community\target\classes started by 陈曦 in F:\workspace\community)
+2020-03-24 01:01:48.564  INFO 1608 --- [main] com.baizhi.Community                     : No active profile set, falling back to default profiles: default
+2020-03-24 01:01:48.651  WARN 1608 --- [background-preinit] o.s.h.c.j.Jackson2ObjectMapperBuilder    : For Jackson Kotlin classes support please add "com.fasterxml.jackson.module:jackson-module-kotlin" to the classpath
+2020-03-24 01:01:49.562 ERROR 1608 --- [main] o.a.catalina.core.AprLifecycleListener   : An incompatible version [1.2.12] of the APR based Apache Tomcat Native library is installed, while Tomcat requires version [1.2.14]
+2020-03-24 01:01:49.669 ERROR 1608 --- [main] o.a.catalina.core.AprLifecycleListener   : An incompatible version [1.2.12] of the APR based Apache Tomcat Native library is installed, while Tomcat requires version [1.2.14]
+2020-03-24 01:01:49.737  INFO 1608 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8081 (http)
+2020-03-24 01:01:49.744 ERROR 1608 --- [main] o.a.catalina.core.AprLifecycleListener   : An incompatible version [1.2.12] of the APR based Apache Tomcat Native library is installed, while Tomcat requires version [1.2.14]
+2020-03-24 01:01:49.745  INFO 1608 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-03-24 01:01:49.745  INFO 1608 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.27]
+2020-03-24 01:01:49.877  INFO 1608 --- [main] o.a.c.c.C.[.[localhost].[/community]     : Initializing Spring embedded WebApplicationContext
+2020-03-24 01:01:49.878  INFO 1608 --- [main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 1261 ms
+2020-03-24 01:01:50.280  INFO 1608 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-03-24 01:01:50.338  INFO 1608 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2020-03-24 01:01:50.492  INFO 1608 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8081 (http) with context path '/community'
+2020-03-24 01:01:50.495  INFO 1608 --- [main] com.baizhi.Community                     : Started Community in 2.464 seconds (JVM running for 3.718)

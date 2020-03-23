@@ -11,9 +11,10 @@ import com.baizhi.model.User;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.util.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -26,8 +27,12 @@ public class QuestionService {
     @Autowired
     private UserMapper userMapper;
 
-    public PaginationDto<QuestionDto> list(Integer page, Integer size) {
-        Integer totalCount = questionMapper.count();
+    public PaginationDto<QuestionDto> list(String search, Integer page, Integer size) {
+        if(!search.equals(".")){
+            String[] tags = StringUtils.split(search," ");
+            search = Arrays.stream(tags).collect(Collectors.joining("|"));
+        }
+        Integer totalCount = questionMapper.count(search);
         PaginationDto<QuestionDto> paginationDto = new PaginationDto<>();
         page = paginationDto.setPagination(totalCount, page, size);
         Integer offset = (page - 1) * size;
@@ -76,7 +81,7 @@ public class QuestionService {
     }
 
     public void createOrUpdate(Question question) {
-        if (StringUtils.isEmpty(question.getId())) {
+        if (org.springframework.util.StringUtils.isEmpty(question.getId())) {
             question.setGmt_create(System.currentTimeMillis());
             question.setGmt_modified(question.getGmt_create());
             questionMapper.create(question);

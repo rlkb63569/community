@@ -16,13 +16,18 @@ public class IndexController {
     @Autowired
     private QuestionService questionService;
 
-    @GetMapping({"/","/index.html"})
-    public String index(HttpServletRequest request, Model model,
-                        @RequestParam(name = "page",defaultValue = "1") Integer page,
-                        @RequestParam(name="size",defaultValue = "5") Integer size){
+    @GetMapping({"/", "/index.html"})
+    public String index(Model model,
+                        @RequestParam(name = "search", defaultValue = ".") String search,
+                        @RequestParam(name = "page", defaultValue = "1") Integer page,
+                        @RequestParam(name = "size", defaultValue = "5") Integer size) {
 
-        PaginationDto pagination = questionService.list(page,size);
-        model.addAttribute("pagination",pagination);
+        if(search.matches("\\s+")){
+            search = ".";
+        }
+        PaginationDto pagination = questionService.list(search, page, size);
+        model.addAttribute("pagination", pagination);
+        model.addAttribute("search",search);
         return "index";
     }
 

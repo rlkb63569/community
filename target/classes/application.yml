@@ -25,4 +25,13 @@ github:
     secret: 853e50b3d0b3f55d083f18ce8b3bcf1762dc1917
   redirect:
     uri: http://localhost:8081/community/callback
-
+logging:
+  file:
+    max-size: 100MB
+    max-history: 5
+    path: logs/
+  level:
+    root: info
+    com.baizhi.mapper: debug
+  pattern:
+    rolling-file-name: ${LOG_FILE}.%d{yyyy-MM-dd}.%i.gz

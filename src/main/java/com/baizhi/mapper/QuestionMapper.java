@@ -14,10 +14,10 @@ public interface QuestionMapper {
     @Select("select * from question limit #{offset},#{size}")
     List<Question> list(@Param("offset") Integer offset,@Param("size") Integer size);
 
-    @Select("select count(1) from question")
-    Integer count();
+    @Select("select count(*) from question where title regexp #{search}")
+    Integer count(@Param("search")String search);
 
-    @Select("select count(1) from question where id=#{id}")
+    @Select("select count(*) from question where id=#{id}")
     Integer countById(@Param("id") Integer id);
 
     @Select("select * from question where id=#{id} limit #{offset},#{size}")
